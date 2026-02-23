@@ -1,6 +1,6 @@
 .page {
   min-height: 100vh;
-  background: #161722
+  background: #171823;
 }
 
 .header {
@@ -38,4 +38,18 @@
   line-height: 1;
   cursor: pointer;
 }
-.content {}
+.content {
+  width: 540px;
+  margin: -105px auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.hint {
+  margin: 18px 0 0;
+  text-align: center;
+  color: #5b5e7e;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 14px;
+}
