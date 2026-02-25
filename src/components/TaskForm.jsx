@@ -1,8 +1,9 @@
 import { useState } from "react";
 import styles from "./Components.module.css";
 
-function TaskForm({ onAddTask }) {
+function TaskForm({ onAddTask, theme }) {
   const [title, setTitle] = useState("");
+  const isLight = theme === "light";
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -14,10 +15,13 @@ function TaskForm({ onAddTask }) {
   };
 
   return (
-    <form className={styles.taskForm} onSubmit={handleSubmit}>
-      <div className={styles.taskFormCircle} />
+    <form
+      className={`${styles.taskForm} ${isLight ? styles.taskFormLight : styles.taskFormDark}`}
+      onSubmit={handleSubmit}
+    >
+      <div className={`${styles.taskFormCircle} ${isLight ? styles.circleLight : styles.circleDark}`} />
       <input
-        className={styles.taskFormInput}
+        className={`${styles.taskFormInput} ${isLight ? styles.taskFormInputLight : styles.taskFormInputDark}`}
         type="text"
         placeholder="Create a new todo..."
         value={title}

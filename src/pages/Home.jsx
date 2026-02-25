@@ -19,6 +19,7 @@ import { db } from "../firebase/firbase";
 function Home() {
   const [tasks, setTasks] = useState([]);
   const [filter, setFilter] = useState("all");
+  const [theme, setTheme] = useState("dark");
 
   const visibleTasks = useMemo(() => {
     if (filter === "active") return tasks.filter((task) => !task.completed);
@@ -67,25 +68,37 @@ function Home() {
     );
   };
 
+  const isLight = theme === "light";
+
   return (
-    <main className={styles.page}>
-      <div className={styles.header}>
+    <main className={`${styles.page} ${isLight ? styles.pageLight : styles.pageDark}`}>
+      <div className={`${styles.header} ${isLight ? styles.headerLight : styles.headerDark}`}>
         <div className={styles.headerInner}>
           <h1 className={styles.title}>TODO</h1>
-          <button className={styles.themeBtn}>☀</button>
+          <button
+            className={styles.themeBtn}
+            type="button"
+            onClick={() => setTheme(isLight ? "dark" : "light")}
+            aria-label="Toggle theme"
+          >
+            {isLight ? "☀" : "☾"}
+          </button>
         </div>
       </div>
 
       <div className={styles.content}>
-        <TaskForm onAddTask={handleAddTask} />
-        <TaskList tasks={visibleTasks} onToggleTask={handleToggleTask} />
+        <TaskForm onAddTask={handleAddTask} theme={theme} />
+        <TaskList tasks={visibleTasks} onToggleTask={handleToggleTask} theme={theme} />
         <FilterBar
           itemsLeft={itemsLeft}
           filter={filter}
           onFilterChange={setFilter}
           onClearCompleted={handleClearCompleted}
+          theme={theme}
         />
-        <p className={styles.hint}>Drag and drop to reorder list</p>
+        <p className={`${styles.hint} ${isLight ? styles.hintLight : styles.hintDark}`}>
+          Drag and drop to reorder list
+        </p>
       </div>
     </main>
   );

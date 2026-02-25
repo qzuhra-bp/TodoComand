@@ -1,14 +1,28 @@
 .page {
   min-height: 100vh;
+}
+
+.pageDark {
   background: #171823;
+}
+
+.pageLight {
+  background: #f2f2f2;
 }
 
 .header {
   height: 300px;
-  background-image: url("../assets/Bitmap.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+.headerDark {
+  background-image: url("../assets/Bitmap.jpg");
+}
+
+.headerLight {
+  background-image: url("../assets/Bitmap-light.jpg");
 }
 
 .headerInner {
@@ -49,7 +63,14 @@
 .hint {
   margin: 18px 0 0;
   text-align: center;
-  color: #5b5e7e;
   font-family: "Josefin Sans", sans-serif;
   font-size: 14px;
+}
+
+.hintDark {
+  color: #5b5e7e;
+}
+
+.hintLight {
+  color: #9495a5;
 }
