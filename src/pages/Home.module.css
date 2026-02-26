@@ -74,3 +74,63 @@
 .hintLight {
   color: #9495a5;
 }
+
+
+
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+        flex-direction: column; 
+    }
+}
+
+
+@media (max-width: 575px) {
+  .header {
+    height: 200px; 
+    background-image: url("../assets/Bitmap-light.jpg");
+  }
+
+  .headerInner {
+    width: 87%; 
+    padding-top: 48px;
+  }
+
+  .title {
+    font-size: 26px;
+    letter-spacing: 10px;
+  }
+
+  .content {
+    width: 87%;
+    margin-top: -95px; 
+    gap: 16px;
+  }
+}
+@media (max-width: 575px) {
+  .header {
+    height: 200px;
+  }
+
+  .headerInner {
+    width: 87%;
+    padding-top: 48px;
+  }
+
+  .title {
+    font-size: 26px;
+    letter-spacing: 10px;
+  }
+
+  .content {
+    width: 90%;
+    margin-top: -95px;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .hint {
+    margin-top: 90px; 
+  }
+}

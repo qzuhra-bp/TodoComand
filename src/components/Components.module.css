@@ -15,7 +15,7 @@
 
 .taskFormLight {
   background: #ffffff;
-  box-shadow: 0 35px 45px -20px rgba(194, 195, 214, 0.5);
+  box-shadow: 0 35px 45px -20px rgba(23, 32, 206, 0.626);
 }
 
 .taskFormCircle {
@@ -93,7 +93,7 @@
 .filterBar {
   width: 100%;
   height: 50px;
-  border-radius: 0 0 6px 6px;
+  border-radius: 0px 0px 6px 6px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -103,10 +103,12 @@
 
 .filterBarDark {
   background: #25273d;
+
 }
 
 .filterBarLight {
   background: #ffffff;
+
 }
 
 .circle {
@@ -188,3 +190,62 @@
 .metaLight {
   color: #9495a5;
 }
+
+
+
+
+@media (max-width: 600px) {
+  
+  .taskForm, .taskItem {
+    height: 52px;
+    padding: 0 20px;
+  }
+
+  .taskText {
+    font-size: 14px;
+  }
+
+  
+  .filterBar {
+    position: relative; 
+    height: 50px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 0 0 6px 6px;
+  }
+
+ 
+  .filters {
+    display: flex !important; 
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 66px; 
+    width: 100%;
+    height: 48px;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    border-radius: 6px; 
+    margin: 0; 
+  }
+
+  
+  .filterBarDark .filters {
+    background-color: #25273d;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  }
+  
+  .filterBarLight .filters {
+    background-color: #ffffff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+
+  .itemsLeft, .clearBtn {
+    font-size: 12px;
+  }
+}
+
+
