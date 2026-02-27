@@ -20,6 +20,7 @@ function Home() {
   const [tasks, setTasks] = useState([]);
   const [filter, setFilter] = useState("all");
   const [theme, setTheme] = useState("dark");
+  const [sortOrder, setSortOrder] = useState("desc");
 
   const visibleTasks = useMemo(() => {
     if (filter === "active") return tasks.filter((task) => !task.completed);
@@ -33,7 +34,7 @@ function Home() {
   );
 
   useEffect(() => {
-    const q = query(collection(db, "tasks"), orderBy("createdAt", "asc"));
+    const q = query(collection(db, "tasks"), orderBy("createdAt", sortOrder));
     const unsubscribe = onSnapshot(q, (snapshot) => {
       const nextTasks = snapshot.docs.map((item) => ({
         id: item.id,
@@ -41,9 +42,8 @@ function Home() {
       }));
       setTasks(nextTasks);
     });
-
     return () => unsubscribe();
-  }, []);
+  }, [sortOrder]);
 
   const handleAddTask = async (title) => {
     await addDoc(collection(db, "tasks"), {
@@ -75,16 +75,27 @@ function Home() {
       <div className={`${styles.header} ${isLight ? styles.headerLight : styles.headerDark}`}>
         <div className={styles.headerInner}>
           <h1 className={styles.title}>TODO</h1>
-          <button
-            className={styles.themeBtn}
-            type="button"
-            onClick={() => setTheme(isLight ? "dark" : "light")}
-            aria-label="Toggle theme"
-          >
-            {isLight ? "☀" : "☾"}
-          </button>
+          
+          <div style={{ display: 'flex', gap: '15px', alignItems: 'center' }}>
+            <button
+              className={styles.themeBtn}
+              type="button"
+              onClick={() => setSortOrder(sortOrder === "asc" ? "desc" : "asc")}
+            >
+              {sortOrder === "asc" ? "↑" : "↓"}
+            </button>
+
+            <button
+              className={styles.themeBtn}
+              type="button"
+              onClick={() => setTheme(isLight ? "dark" : "light")}
+              aria-label="Toggle theme"
+            >
+              {isLight ? "☀" : "☾"}
+            </button>
+          </div>
         </div>
-      </div>
+      </div> {/* <-- ВОТ ЭТУ СКОБКУ ТЫ ПРОПУСТИЛ */}
 
       <div className={styles.content}>
         <TaskForm onAddTask={handleAddTask} theme={theme} />
